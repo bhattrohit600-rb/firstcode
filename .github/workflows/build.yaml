@@ -10,10 +10,10 @@ jobs:
       steps:
 
       - name: check out code
-        uses: actions/checkout@V5
+        uses: actions/checkout@V4
 
       - name: docker_build
-        run: docker build -f Dockerfile -t rohitbhatt8988/firstcode:latest
+        run: docker build -f Dockerfile -t rohitbhatt8988/firstcode:latest .
 
       - name: docker push
         run: |
