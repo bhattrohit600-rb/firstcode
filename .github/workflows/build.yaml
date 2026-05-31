@@ -1,0 +1,21 @@
+name: Website_publish
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+   docker_build
+      run-on: ubuntu-latest
+
+      steps:
+
+      - name: check out code
+        uses: action/check@latest
+
+      - name: docker_build
+        run: docker build -f ../Dockerfile -t rohitbhatt8988/firstcode:latest
+
+      - name: docker push
+        run: |
+          docker login -p ${{ secrets.DOCKERHUB_PASSWORD }} -u ${{ secrets.DOCKERHUB_USERNAME }}
+          docker push rohitbhatt8988/firstcode:latest
